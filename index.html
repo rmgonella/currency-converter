@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conversor de Moedas - Conversão em tempo real usando taxas de câmbio atualizadas">
+    <title>Conversor de Moedas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>💱 Conversor de Moedas</h1>
+            <p class="subtitle">Conversão em tempo real com taxas atualizadas</p>
+        </header>
+
+        <main class="converter-card">
+            <div class="input-group">
+                <label for="amount">Valor</label>
+                <input 
+                    type="number" 
+                    id="amount" 
+                    placeholder="Digite o valor" 
+                    value="100"
+                    min="0"
+                    step="0.01"
+                >
+            </div>
+
+            <div class="currency-selection">
+                <div class="currency-group">
+                    <label for="fromCurrency">De</label>
+                    <select id="fromCurrency" class="currency-select">
+                        <option value="USD">USD - Dólar Americano</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="BRL" selected>BRL - Real Brasileiro</option>
+                        <option value="GBP">GBP - Libra Esterlina</option>
+                        <option value="JPY">JPY - Iene Japonês</option>
+                        <option value="CAD">CAD - Dólar Canadense</option>
+                        <option value="AUD">AUD - Dólar Australiano</option>
+                        <option value="CHF">CHF - Franco Suíço</option>
+                        <option value="CNY">CNY - Yuan Chinês</option>
+                        <option value="ARS">ARS - Peso Argentino</option>
+                    </select>
+                </div>
+
+                <button class="swap-button" id="swapButton" aria-label="Trocar moedas">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 16V4M7 4L3 8M7 4L11 8"></path>
+                        <path d="M17 8V20M17 20L21 16M17 20L13 16"></path>
+                    </svg>
+                </button>
+
+                <div class="currency-group">
+                    <label for="toCurrency">Para</label>
+                    <select id="toCurrency" class="currency-select">
+                        <option value="USD" selected>USD - Dólar Americano</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="BRL">BRL - Real Brasileiro</option>
+                        <option value="GBP">GBP - Libra Esterlina</option>
+                        <option value="JPY">JPY - Iene Japonês</option>
+                        <option value="CAD">CAD - Dólar Canadense</option>
+                        <option value="AUD">AUD - Dólar Australiano</option>
+                        <option value="CHF">CHF - Franco Suíço</option>
+                        <option value="CNY">CNY - Yuan Chinês</option>
+                        <option value="ARS">ARS - Peso Argentino</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="convert-button" id="convertButton">
+                <span id="buttonText">Converter</span>
+                <span id="buttonLoader" class="loader hidden"></span>
+            </button>
+
+            <div class="result-container" id="resultContainer">
+                <div class="result-box">
+                    <p class="result-label">Resultado</p>
+                    <p class="result-value" id="resultValue">--</p>
+                    <p class="exchange-rate" id="exchangeRate"></p>
+                </div>
+            </div>
+
+            <div class="error-message hidden" id="errorMessage">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span id="errorText">Erro ao converter</span>
+            </div>
+
+            <div class="last-update" id="lastUpdate"></div>
+        </main>
+
+        <footer class="footer">
+            <p>
+                Taxas fornecidas por 
+                <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">
+                    Exchange Rate API
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
